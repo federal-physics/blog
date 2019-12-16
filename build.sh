@@ -9,7 +9,10 @@ lstrip() {
 
 echo '% Brain Dump' >index.md
 
-for page in *.md; do
+# shellcheck disable=SC2010
+pages="$(ls -1t | grep .md | grep -vE "README|index")"
+
+for page in $pages; do
     case $page in
     README.md) ;;
     index.md) ;;
